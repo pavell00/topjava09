@@ -6,6 +6,7 @@ import ru.javawebinar.topjava.repository.MealRepository;
 import ru.javawebinar.topjava.util.DateTimeUtil;
 
 import java.time.LocalDateTime;
+import java.time.Month;
 import java.util.Collection;
 import java.util.Comparator;
 import java.util.Map;
@@ -13,6 +14,8 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+
+import static ru.javawebinar.topjava.UserTestData.ADMIN_ID;
 
 /**
  * GKislin
@@ -26,6 +29,11 @@ public class InMemoryMealRepositoryImpl implements MealRepository {
     // Map  userId -> (mealId-> meal)
     private Map<Integer, Map<Integer, Meal>> repository = new ConcurrentHashMap<>();
     private AtomicInteger counter = new AtomicInteger(0);
+
+    {
+        save(new Meal(LocalDateTime.of(2015, Month.JUNE, 1, 14, 0), "Админ ланч", 510), ADMIN_ID);
+        save(new Meal(LocalDateTime.of(2015, Month.JUNE, 1, 21, 0), "Админ ужин", 1500), ADMIN_ID);
+    }
 
     @Override
     public Meal save(Meal meal, int userId) {
