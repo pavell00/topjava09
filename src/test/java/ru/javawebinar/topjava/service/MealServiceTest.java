@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import ru.javawebinar.topjava.model.Meal;
-import ru.javawebinar.topjava.util.DbPopulator;
+//import ru.javawebinar.topjava.util.DbPopulator;
 import ru.javawebinar.topjava.util.exception.NotFoundException;
 
 import java.time.LocalDate;
@@ -28,14 +28,14 @@ public class MealServiceTest {
     @Autowired
     private MealService service;
 
-    @Autowired
+/*    @Autowired
     private DbPopulator dbPopulator;
 
     @Before
     public void setUp() throws Exception {
         dbPopulator.execute();
     }
-
+*/
     @Test
     public void testDelete() throws Exception {
         service.delete(MEAL1_ID, USER_ID);
