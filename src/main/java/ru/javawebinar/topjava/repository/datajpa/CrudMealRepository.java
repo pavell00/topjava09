@@ -29,7 +29,7 @@ public interface CrudMealRepository extends JpaRepository<Meal, Integer> {
     Meal save(Meal meal);
 
     @Query("SELECT m FROM Meal m WHERE m.id=:id AND m.user.id=:userId")
-    Meal findOne(@Param("id") int id, @Param("userId") int userId);
+    Meal get(@Param("id") int id, @Param("userId") int userId);
 
     @Query("SELECT m FROM Meal m WHERE m.user.id=:userId ORDER BY m.dateTime DESC")
     List<Meal> findAll(@Param("userId") int userId);
